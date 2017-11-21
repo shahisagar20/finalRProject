@@ -57,9 +57,10 @@ ourmean = function(x){
 }
 
 
-ourmean(x)
 
-#Function to produce the kernel density plots
+
+#Function to produce the kernel density plots with the mean of the data as bandwidth
+
 kfunction = function(x){
   out = removeOutliers(x)
   m = ourmean(y)
@@ -82,8 +83,4 @@ kfunction = function(x){
   
   
 }
-class(Cars93$Max.Price)
-kfunction(Cars93$MPG.city)
-class(x)
-class(as.numeric(Cars93$MPG.city))
-kfunction(Cars93$Max.Price)
+
