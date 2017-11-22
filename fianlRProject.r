@@ -10,10 +10,10 @@
 removeOutliers = function(x){
  j =1
  y = 0
- if(class(x)=='integer'){
-   x = as.numeric(x)
- }
-  if(class(x) == 'numeric' & length(x) != 0){
+ 
+ #Checks if the given data is numeric or not 
+ #If the data is not numeric then it asks the user to put numeric data
+  if(class(x) == 'numeric' & length(x) != 0 | class(x)=='integer'){
     for(i in x){
       if(!is.na(i)){
         y[j] = i
@@ -35,7 +35,7 @@ removeOutliers = function(x){
     }
     return(output)
   }else{
-    print("The input data should be numeric. ")
+    print("The input data should be numeric or integer. ")
     }
 }
 
@@ -46,6 +46,7 @@ ourmean = function(x){
   j=1
   y = 0
   out = removeOutliers(x)
+  
   for(i in out){
     if(!is.na(i)){
       y[j] = i
@@ -63,7 +64,6 @@ ourmean = function(x){
 
 kfunction = function(x){
   out = removeOutliers(x)
-  m = ourmean(y)
   
   y = 0
   j=1
@@ -73,6 +73,7 @@ kfunction = function(x){
       j =j+1
     }
   }
+  m = ourmean(y)
   par(mfrow =c(2,3))
   plot(density(y, kernel = "gaussian", bw = m), col = "red", main = "Gaussian K")
   plot(density(y, kernel = "cosine", bw =m), col = "red", main = "Cosine K")
@@ -84,3 +85,14 @@ kfunction = function(x){
   
 }
 
+kfunction(Cars93$MPG.city)
+mean(Cars93$Price)
+ourmean(Cars93$Price)
+removeOutliers(Cars93$Price)
+mean(Cars93$MPG.city)
+iqr=quantile(Cars93$MPG.city, 0.75)-quantile(Cars93$MPG.city, 0.25)
+25+10.5
+1.5*iqr
+18-10.5
+
+removeOutliers(Cars93$MPG.city)
